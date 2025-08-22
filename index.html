@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jester — Connecting Hearts (AI demo)</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Background hearts canvas -->
+  <canvas id="bgCanvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header / Navbar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Jester home">
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <circle cx="32" cy="32" r="30" fill="#000"/>
+          <path d="M20 40c8 6 16 6 24 0 M22 24c2-6 8-6 10 0 M32 24c2-6 8-6 10 0"
+                stroke="#E10600" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="brand-text">Jester</span>
+      </a>
+
+      <button id="burger" class="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav" class="nav" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#gallery" class="nav-link">Photo Gallery</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="openSearch" class="nav-link nav-search" aria-label="Open search">🔎 Search</button>
+        <a href="chat.php" class="chat-pill" title="Open Chat">💬 Chat</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <h1 class="hero-title reveal">Love Without Boundaries</h1>
+        <p class="hero-sub reveal delay-1">Jester brings couples, families and friends closer — anywhere in the world.</p>
+        <div class="hero-cta reveal delay-2">
+          <a class="btn btn-primary" href="signup.php">Join Now</a>
+          <a class="btn btn-outline" href="#gallery">Explore Gallery</a>
+        </div>
+
+        <div class="hero-stats reveal delay-3" aria-hidden="true">
+          <div><strong>120k+</strong><span>photos</span></div>
+          <div><strong>90+</strong><span>countries</span></div>
+          <div><strong>24/7</strong><span>connections</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="about" class="section features">
+      <div class="container">
+        <h2 class="section-title reveal">Why Jester?</h2>
+        <div class="cards">
+          <article class="card reveal">
+            <h3>Global Chat</h3>
+            <p>Seamless messaging with country code sign-up and verification.</p>
+          </article>
+          <article class="card reveal delay-1">
+            <h3>Memories Forever</h3>
+            <p>Upload photos and keep your special moments safe and beautiful.</p>
+          </article>
+          <article class="card reveal delay-2">
+            <h3>Private & Secure</h3>
+            <p>Designed with privacy in mind — you control your space.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section gallery">
+      <div class="container">
+        <h2 class="section-title reveal">Photo Gallery</h2>
+
+        <div class="gallery-controls reveal delay-1">
+          <input id="gallerySearch" class="search-input" type="text"
+                 placeholder="Search photos — e.g. wedding, smile, family" aria-label="Search gallery">
+          <div class="note">Tip: type keywords to filter • works on tags below photos</div>
+        </div>
+
+        <div class="grid gallery-grid reveal delay-2" id="galleryGrid">
+          <figure class="photo" data-tags="couple smile love">
+            <img src="https://picsum.photos/600/400?random=11" alt="Couple smiling">
+            <figcaption>Couple smiling</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="wedding ceremony love">
+            <img src="https://picsum.photos/600/400?random=12" alt="Wedding ceremony">
+            <figcaption>Wedding ceremony</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="family memory joy">
+            <img src="https://picsum.photos/600/400?random=13" alt="Family memory">
+            <figcaption>Family memory</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="friends laughter fun">
+            <img src="https://picsum.photos/600/400?random=14" alt="Friends laughing">
+            <figcaption>Friends laughing</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="romance date couple">
+            <img src="https://picsum.photos/600/400?random=15" alt="Romantic moment">
+            <figcaption>Romantic moment</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="celebration party happy">
+            <img src="https://picsum.photos/600/400?random=16" alt="Celebration">
+            <figcaption>Celebration</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section testimonials">
+      <div class="container">
+        <h2 class="section-title reveal">What People Say</h2>
+
+        <div class="testi-wrap reveal delay-1">
+          <button class="tbtn prev" aria-label="Previous testimonial">‹</button>
+          <div class="testimonials-track" id="testiTrack">
+            <blockquote class="testi active">
+              <p>“We planned our wedding and celebrated together with family in different countries — thanks to Jester.”</p>
+              <cite>— Ayo & Kemi</cite>
+            </blockquote>
+            <blockquote class="testi">
+              <p>“Seeing my baby's first smile daily made a long separation easier — Jester is priceless.”</p>
+              <cite>— Lila</cite>
+            </blockquote>
+            <blockquote class="testi">
+              <p>“It feels elegant and intimate — conversations that matter.”</p>
+              <cite>— Musa</cite>
+            </blockquote>
+          </div>
+          <button class="tbtn next" aria-label="Next testimonial">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <h2 class="section-title">Get In Touch</h2>
+          <p>Questions, feedback or partnership ideas? Drop us a note — this demo contact form is front-end only.</p>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal delay-1" novalidate>
+          <label><span>Name</span><input type="text" name="name" placeholder="Your full name" required></label>
+          <label><span>Email</span><input type="email" name="email" placeholder="you@example.com" required></label>
+          <label class="wide"><span>Message</span><textarea name="message" rows="5" placeholder="Write your message…" required></textarea></label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="reset" class="btn btn-outline">Reset</button>
+          </div>
+          <p id="contactStatus" class="contact-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="brandline">
+        <svg class="logo small" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" fill="#000"/>
+          <path d="M20 40c8 6 16 6 24 0 M22 24c2-6 8-6 10 0 M32 24c2-6 8-6 10 0"
+                stroke="#E10600" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+        <strong>Jester</strong>
+        <small>Connecting hearts since 2025</small>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="socials" aria-hidden="false">
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Facebook">📘</a>
+      </div>
+    </div>
+    <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
+  </footer>
+
+  <!-- Search Overlay -->
+  <div id="searchOverlay" class="search-overlay" hidden>
+    <button id="closeSearch" class="close-search" aria-label="Close search">×</button>
+    <form id="searchForm" class="search-form" role="search">
+      <input id="globalSearch" type="search" placeholder="Search gallery, people, memories..." aria-label="Search all">
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- ===========================
+       GLOBAL CHAT WIDGET (AI MOCK)
+       =========================== -->
+  <div id="chatWidget" class="chat-widget" aria-live="polite">
+    <button id="chatToggle" class="chat-toggle" aria-label="Open chat">
+      <span class="chat-badge" id="chatBadge">!</span>
+      <svg viewBox="0 0 24 24" class="chat-icon" aria-hidden="true"><path fill="#fff" d="M4 4h16v10H7l-3 3z"/></svg>
+    </button>
+
+    <aside id="chatPanel" class="chat-panel" aria-hidden="true" role="dialog" aria-label="Chat window with Jester Bot">
+      <header class="chat-header">
+        <div class="chat-user">
+          <img src="https://picsum.photos/seed/jester/64/64" alt="Jester avatar" class="chat-avatar"/>
+          <div>
+            <strong>Jester Bot</strong>
+            <small class="status online">AI helper • Demo</small>
+          </div>
+        </div>
+        <div class="chat-actions">
+          <button id="minimizeChat" class="icon-btn" title="Minimize">–</button>
+          <button id="closeChat" class="icon-btn" title="Close">×</button>
+        </div>
+      </header>
+
+      <div id="messagesArea" class="chat-messages" tabindex="0" aria-live="polite">
+        <!-- demo welcome -->
+        <div class="msg from">
+          <div class="bubble">Hi! I'm <strong>Jester Bot</strong> 🤖💕 — ask me for photo suggestions, romantic message ideas, or say “hello”.</div>
+        </div>
+      </div>
+
+      <form id="chatForm" class="chat-composer" autocomplete="off" role="search">
+        <button type="button" id="emojiBtn" class="icon-btn" title="Emoji">😊</button>
+        <input id="chatInput" type="text" placeholder="Say hi to Jester Bot…" aria-label="Type a message"/>
+        <input id="chatTo" type="hidden" value="0" />
+        <button class="btn send-btn" type="submit" aria-label="Send message">Send</button>
+      </form>
+    </aside>
+  </div>
+
+</body>
+</html>
